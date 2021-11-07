@@ -27,20 +27,14 @@
     </metro:MetroWindow.DataContext>
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
-            <Button ToolTip="Open up the GitHub site" Click="AddWindow">
-                <iconPacks:PackIconMaterial Width="16"
-                                  Height="16"
-                                  Kind="Plus" />
+            <Button ToolTip="Create new window" Click="AddWindow">
+                <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Plus" />
             </Button>
-            <Button Click="SwitschInTop" ToolTip="Open up the GitHub site">
-                <iconPacks:PackIconMaterial Width="16"
-                                  Height="16"
-                                  Kind="{Binding InTop}" />
+            <Button Click="SwitschInTop" ToolTip="Pin the window to top">
+                <iconPacks:PackIconMaterial Width="16" Height="16" Kind="{Binding InTop}" />
             </Button>
-            <Button Click="SwitschDisplay" ToolTip="Open up the GitHub site">
-                <iconPacks:PackIconMaterial Width="16"
-                                  Height="16"
-                                  Kind="{Binding Display}" />
+            <Button Click="SwitschDisplay" ToolTip="Toggle display in taskbar">
+                <iconPacks:PackIconMaterial Width="16" Height="16" Kind="{Binding Display}" />
             </Button>
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>

@@ -4,10 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Memo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Memo.png" />
+    <None Remove="Memo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Memo.ico" />
   </ItemGroup>
 
   <ItemGroup>
