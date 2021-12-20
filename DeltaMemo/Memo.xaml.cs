@@ -21,20 +21,29 @@ namespace DeltaMemo
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Memo : MetroWindow
     {
-        private MainWinfowModel model { get; set; }
+        private MemoModel model { get; set; }
         private bool isClosed { get; set; }
 
-        public MainWindow()
+        public Memo()
         {
             InitializeComponent();
-            model = this.DataContext as MainWinfowModel;
+            model = this.DataContext as MemoModel;
         }
 
         private void AddWindow(object sender, RoutedEventArgs e)
         {
-            var window = new MainWindow();
+            var window = new Memo();
+            window.Height = this.Height;
+            window.Width = this.Width;
+            window.WindowStartupLocation = WindowStartupLocation.Manual;
+            window.Left = this.Left + this.Width + 10;
+            if (window.Left + window.Width > SystemParameters.FullPrimaryScreenWidth)
+            {
+                window.Left = this.Left  - this.Width - 10;
+            }
+            window.Top = this.Top;
             window.Show();
         }
 
@@ -48,6 +57,12 @@ namespace DeltaMemo
         {
             this.Topmost = !this.Topmost;
             model.InTop = this.Topmost ? PackIconMaterialKind.PinOutline.ToString() : PackIconMaterialKind.PinOffOutline.ToString();
+        }
+
+        private void ShowMemoList(object sender, RoutedEventArgs e)
+        {
+            var window = new MemoList();
+            window.Show();
         }
 
         private void IncreaseLineHeight(object sender, RoutedEventArgs e)

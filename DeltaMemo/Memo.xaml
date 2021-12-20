@@ -1,5 +1,5 @@
 ﻿<metro:MetroWindow  
-    x:Class="DeltaMemo.MainWindow"
+    x:Class="DeltaMemo.Memo"
     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -21,23 +21,33 @@
     TitleAlignment="Center"
     ShowMaxRestoreButton="False"
     ShowMinButton="False"
-    BorderThickness="1" Closing="MetroWindow_Closing" ShowIconOnTitleBar="False" Icon="/Memo.png">
+    BorderThickness="1" 
+    Closing="MetroWindow_Closing" 
+    ShowIconOnTitleBar="False" 
+    Icon="/Memo.png">
     <metro:MetroWindow.DataContext>
-        <local:MainWinfowModel/>
+        <local:MemoModel/>
     </metro:MetroWindow.DataContext>
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
-            <Button ToolTip="Create new window" Click="AddWindow">
+            <Button Click="AddWindow" ToolTip="创建新窗口">
                 <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Plus" />
             </Button>
-            <Button Click="SwitschInTop" ToolTip="Pin the window to top">
+            <Button Click="SwitschInTop" ToolTip="切换窗口顶层显示">
                 <iconPacks:PackIconMaterial Width="16" Height="16" Kind="{Binding InTop}" />
             </Button>
-            <Button Click="SwitschDisplay" ToolTip="Toggle display in taskbar">
+            <Button Click="SwitschDisplay" ToolTip="切换窗口任务栏显示">
                 <iconPacks:PackIconMaterial Width="16" Height="16" Kind="{Binding Display}" />
             </Button>
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button Click="ShowMemoList" ToolTip="显示笔记列表">
+                <iconPacks:PackIconMaterial Width="16" Height="16" Kind="ViewListOutline" />
+            </Button>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
     <Grid>
         <DockPanel>
             <DockPanel.Resources>
@@ -77,76 +87,76 @@
             </DockPanel.Resources>
             <ToolBarTray DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#FFF1F1F1" Visibility="{Binding IsShowToolbar}">
                 <ToolBar Name="mainToolBar">
-                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Undo" ToolTip="Undo">
+                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Undo" ToolTip="撤销">
                         <iconPacks:PackIconMaterial Kind="UndoVariant" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Redo" ToolTip="Redo">
+                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Redo" ToolTip="重做">
                         <iconPacks:PackIconMaterial Kind="RedoVariant" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Cut" ToolTip="Cut">
+                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Cut" ToolTip="剪切">
                         <iconPacks:PackIconMaterial Kind="ContentCut" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Copy" ToolTip="Copy">
+                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Copy" ToolTip="复制">
                         <iconPacks:PackIconMaterial Kind="ContentCopy" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Paste" ToolTip="Paste">
+                    <Button Style="{StaticResource toolbarbutton}" Command="ApplicationCommands.Paste" ToolTip="粘贴">
                         <iconPacks:PackIconMaterial Kind="ContentPaste" Height="16" Width="16" />
                     </Button>
                 </ToolBar>
                 <ToolBar Band="1">
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleBold" ToolTip="Bold">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleBold" ToolTip="粗体">
                         <iconPacks:PackIconMaterial Kind="FormatBold" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleItalic" ToolTip="Italic">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleItalic" ToolTip="斜体">
                         <iconPacks:PackIconMaterial Kind="FormatItalic" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleUnderline" ToolTip="Underline">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleUnderline" ToolTip="下划线">
                         <iconPacks:PackIconMaterial Kind="FormatUnderline" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.IncreaseFontSize" ToolTip="Grow Font">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.IncreaseFontSize" ToolTip="增大字体">
                         <iconPacks:PackIconMaterial Kind="FormatFontSizeIncrease" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.DecreaseFontSize" ToolTip="Shrink Font">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.DecreaseFontSize" ToolTip="缩小字体">
                         <iconPacks:PackIconMaterial Kind="FormatFontSizeDecrease" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleBullets" ToolTip="Bullets">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleBullets" ToolTip="无序列表">
                         <iconPacks:PackIconMaterial Kind="FormatListBulleted" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleNumbering" ToolTip="Numbering">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.ToggleNumbering" ToolTip="有序列表">
                         <iconPacks:PackIconMaterial Kind="FormatListNumbered" Height="16" Width="16" />
                     </Button>
                 </ToolBar>
                 <ToolBar Band="2">
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignLeft" ToolTip="Align Left">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignLeft" ToolTip="文字居左">
                         <iconPacks:PackIconMaterial Kind="FormatAlignLeft" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignCenter" ToolTip="Align Center">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignCenter" ToolTip="文字居中">
                         <iconPacks:PackIconMaterial Kind="FormatAlignCenter" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignRight" ToolTip="Align Right">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignRight" ToolTip="文字居右">
                         <iconPacks:PackIconMaterial Kind="FormatAlignRight" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignJustify" ToolTip="Align Justify">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.AlignJustify" ToolTip="文字等宽">
                         <iconPacks:PackIconMaterial Kind="FormatAlignJustify" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.IncreaseIndentation" ToolTip="Increase Indent">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.IncreaseIndentation" ToolTip="增加缩进">
                         <iconPacks:PackIconMaterial Kind="FormatIndentIncrease" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.DecreaseIndentation" ToolTip="Decrease Indent">
+                    <Button Style="{StaticResource toolbarbutton}" Command="EditingCommands.DecreaseIndentation" ToolTip="减小缩进">
                         <iconPacks:PackIconMaterial Kind="FormatIndentDecrease" Height="16" Width="16" />
                     </Button>
 
-                    <Button Style="{StaticResource toolbarbutton}" Click="IncreaseLineHeight" IsEnabled="{Binding CanIncreaseLineHeight}" ToolTip="Increase Line Height">
+                    <Button Style="{StaticResource toolbarbutton}" Click="IncreaseLineHeight" IsEnabled="{Binding CanIncreaseLineHeight}" ToolTip="增大行间距">
                         <iconPacks:PackIconMaterial Kind="ArrowExpandVertical" Height="16" Width="16" />
                     </Button>
-                    <Button Style="{StaticResource toolbarbutton}" Click="DecreaseLineHeight" IsEnabled="{Binding CanDecreaseLineHeight}" ToolTip="Decrease Line Height">
+                    <Button Style="{StaticResource toolbarbutton}" Click="DecreaseLineHeight" IsEnabled="{Binding CanDecreaseLineHeight}" ToolTip="缩小行间距">
                         <iconPacks:PackIconMaterial Kind="ArrowCollapseVertical" Height="16" Width="16" />
                     </Button>
                     <Grid />
                 </ToolBar>
             </ToolBarTray>
             <Grid DockPanel.Dock="Bottom" Height="12" Margin="0" Background="#FFF1F1F1">
-                <Button Click="ToggleToolbar" Style="{StaticResource togglebutton}" ToolTip="Toggle tool bar" Width="auto" Margin="1">
+                <Button Click="ToggleToolbar" Style="{StaticResource togglebutton}" ToolTip="切换工具栏显示" Width="auto" Margin="1">
                     <iconPacks:PackIconMaterial Kind="{Binding ToggleToolbarButtonText}" Height="8"></iconPacks:PackIconMaterial>
                 </Button>
             </Grid>
@@ -191,8 +201,8 @@
                         </Button>
                     </Grid>
                     <StackPanel>
-                        <TextBlock Text="There are currently changes,"/>
-                        <TextBlock Text="do you still want to close the window?"/>
+                        <TextBlock Text="当前窗口文字有变更,"/>
+                        <TextBlock Text="确认要关闭窗口吗？"/>
                     </StackPanel>
                 </DockPanel>
             </materialDesign:DialogHost.DialogContent>

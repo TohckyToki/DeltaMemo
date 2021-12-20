@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace DeltaMemo
 {
-    public class MainWinfowModel : INotifyPropertyChanged
+    public class MemoModel : INotifyPropertyChanged
     {
         private string _dispaly = PackIconMaterialKind.EyeOutline.ToString();
 
