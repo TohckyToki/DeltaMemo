@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeltaMemo", "DeltaMemo\DeltaMemo.csproj", "{158D7202-0560-4F17-98A7-3086C9ACDE37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaMemo.Server", "DeltaMemo.Server\DeltaMemo.Server.csproj", "{340C4E73-91B6-4416-9999-9FF726713BE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaMemo.Server", "DeltaMemo.Server\DeltaMemo.Server.csproj", "{E4D4218E-AA00-43C8-BC95-9E92172E7A20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{158D7202-0560-4F17-98A7-3086C9ACDE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{158D7202-0560-4F17-98A7-3086C9ACDE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{158D7202-0560-4F17-98A7-3086C9ACDE37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{340C4E73-91B6-4416-9999-9FF726713BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{340C4E73-91B6-4416-9999-9FF726713BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{340C4E73-91B6-4416-9999-9FF726713BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{340C4E73-91B6-4416-9999-9FF726713BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D4218E-AA00-43C8-BC95-9E92172E7A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D4218E-AA00-43C8-BC95-9E92172E7A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D4218E-AA00-43C8-BC95-9E92172E7A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D4218E-AA00-43C8-BC95-9E92172E7A20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
