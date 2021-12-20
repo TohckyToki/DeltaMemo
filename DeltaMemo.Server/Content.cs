@@ -7,5 +7,6 @@ namespace DeltaMemo.Server
     {
         public long Id { get; set; }
         public string Text { get; set; } = null!;
+        public DateTime WroteDate { get; set; }
     }
 }
