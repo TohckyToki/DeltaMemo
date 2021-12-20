@@ -1,0 +1,51 @@
+﻿<metro:MetroWindow
+    x:Class="DeltaMemo.MemoList"
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:DeltaMemo"
+    mc:Ignorable="d"
+    Title="MemoList" Height="450" Width="350"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal" 
+    TextOptions.TextRenderingMode="Auto"        
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    TitleAlignment="Center"
+    ShowMaxRestoreButton="False"
+    ShowMinButton="False"
+    BorderThickness="1" 
+    ShowIconOnTitleBar="False">
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands>
+            <Button ToolTip="创建新窗口">
+                <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Plus" />
+            </Button>
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button ToolTip="设置">
+                <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Menu" />
+            </Button>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Padding="5"
+                Height="40"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                materialDesign:HintAssist.Hint="搜索" />
+        </StackPanel>
+    </Grid>
+</metro:MetroWindow>
