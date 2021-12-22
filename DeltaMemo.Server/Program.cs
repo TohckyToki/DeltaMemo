@@ -34,7 +34,7 @@ app.MapPut("/Contents/{id}", async (int id, Content inputContent, DeltaMemoConte
 
     if (content is null) return Results.NotFound();
 
-    content.Text = inputContent.Text;
+    content.WroteText = inputContent.WroteText;
 
     await db.SaveChangesAsync();
 
