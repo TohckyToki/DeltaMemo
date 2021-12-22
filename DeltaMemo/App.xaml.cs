@@ -13,5 +13,15 @@ namespace DeltaMemo
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            this.Startup += App_Startup;
+        }
+
+        private void App_Startup(object sender, StartupEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            Config.ServerPath = config.AppSettings.Settings[nameof(Config.ServerPath)]?.Value ?? string.Empty;
+        }
     }
 }
