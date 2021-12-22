@@ -11,6 +11,13 @@ namespace DeltaMemo
 {
     public class MemoModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private string _dispaly = PackIconMaterialKind.EyeOutline.ToString();
 
         public string Display
@@ -126,11 +133,5 @@ namespace DeltaMemo
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
