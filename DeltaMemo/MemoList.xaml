@@ -23,6 +23,9 @@
     ShowMinButton="False"
     BorderThickness="1" 
     ShowIconOnTitleBar="False">
+    <metro:MetroWindow.DataContext>
+        <local:MemoListModel/>
+    </metro:MetroWindow.DataContext>
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
             <Button ToolTip="创建新窗口">
@@ -32,20 +35,36 @@
     </metro:MetroWindow.LeftWindowCommands>
     <metro:MetroWindow.RightWindowCommands>
         <metro:WindowCommands>
-            <Button ToolTip="设置">
+            <Button ToolTip="设置" Click="SwitchDisplay">
                 <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Menu" />
             </Button>
         </metro:WindowCommands>
     </metro:MetroWindow.RightWindowCommands>
     <Grid>
-        <StackPanel Margin="10">
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Padding="5"
-                Height="40"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                materialDesign:HintAssist.Hint="搜索" />
-        </StackPanel>
+        <Grid Margin="10" Loaded="MetroWindow_Loaded">
+            <TextBox VerticalAlignment="Top" Style="{StaticResource MahApps.Styles.TextBox.Search}" Text="{Binding QueryText}"/>
+            <Grid Margin="0 30 0 0">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl
+                        ItemsSource="{Binding Contents}"
+                        Grid.IsSharedSizeScope="True">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type local:Content}">
+                                <materialDesign:Card 
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                    Background="LightYellow" Foreground="Black" Padding="10" Margin="0 10"
+                                    MinHeight="80" UniformCornerRadius="10">
+                                    <Grid Margin="0" Tag="{Binding id}">
+                                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 0 5 0" Text="{Binding wroteDate}" FontSize="8"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding wroteText}" Margin="5 15 5 0"/>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <local:AppOption></local:AppOption>
     </Grid>
 </metro:MetroWindow>
