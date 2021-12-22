@@ -31,7 +31,7 @@ namespace DeltaMemo.Server
             {
                 entity.ToTable("Content");
 
-                entity.Property(e => e.Text).HasColumnType("text");
+                entity.Property(e => e.WroteText).HasColumnType("text");
 
                 entity.Property(e => e.WroteDate).HasColumnType("datetime");
             });
