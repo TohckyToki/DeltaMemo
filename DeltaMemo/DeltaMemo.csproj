@@ -17,8 +17,8 @@
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="4.3.0-ci82" />
-    <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.0-ci82" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.0" />
   </ItemGroup>
 
   <ItemGroup>

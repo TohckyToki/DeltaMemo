@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="DeltaMemo.OptionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DeltaMemo"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Width="282">
+    <Grid>
+        <ListView>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>TEST</TextBlock>
+                    <Button Click="Button_Click">asd</Button>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+    </Grid>
+</UserControl>

@@ -46,8 +46,9 @@ namespace DeltaMemo
 
         private void SwitchDisplay(object sender, RoutedEventArgs e)
         {
-            model.IsOption = model.IsList;
-            model.IsList = !model.IsOption;
+            var tmp = model.OptionVisibility;
+            model.OptionVisibility = model.ListVisibility;
+            model.ListVisibility = tmp;
         }
     }
 }

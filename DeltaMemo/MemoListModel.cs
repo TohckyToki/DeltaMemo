@@ -49,33 +49,33 @@ namespace DeltaMemo
             }
         }
 
-        private bool _isList = true;
+        private Visibility _listVisibility = Visibility.Visible;
 
-        public bool IsList
+        public Visibility ListVisibility
         {
             get
             {
-                return _isList;
+                return _listVisibility;
             }
             set
             {
-                _isList = value;
-                NotifyPropertyChanged(nameof(IsList));
+                _listVisibility = value;
+                NotifyPropertyChanged(nameof(ListVisibility));
             }
         }
 
-        private bool _isOption = false;
+        private Visibility _optionVisibility = Visibility.Hidden;
 
-        public bool IsOption
+        public Visibility OptionVisibility
         {
             get
             {
-                return _isOption;
+                return _optionVisibility;
             }
             set
             {
-                _isOption = value;
-                NotifyPropertyChanged(nameof(IsOption));
+                _optionVisibility = value;
+                NotifyPropertyChanged(nameof(OptionVisibility));
             }
         }
     }

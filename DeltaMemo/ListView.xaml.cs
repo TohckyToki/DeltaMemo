@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DeltaMemo
 {
     /// <summary>
-    /// Interaction logic for AppOption.xaml
+    /// Interaction logic for ListView.xaml
     /// </summary>
-    public partial class AppOption : UserControl
+    public partial class ListView : UserControl
     {
-        public AppOption()
+        public ListView()
         {
             InitializeComponent();
         }

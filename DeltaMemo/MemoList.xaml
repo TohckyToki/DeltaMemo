@@ -28,14 +28,14 @@
     </metro:MetroWindow.DataContext>
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
-            <Button ToolTip="创建新窗口">
+            <Button ToolTip="create new window.">
                 <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Plus" />
             </Button>
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>
     <metro:MetroWindow.RightWindowCommands>
         <metro:WindowCommands>
-            <Button ToolTip="设置" Click="SwitchDisplay">
+            <Button ToolTip="settings" Click="SwitchDisplay">
                 <iconPacks:PackIconMaterial Width="16" Height="16" Kind="Menu" />
             </Button>
         </metro:WindowCommands>
@@ -65,6 +65,6 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <local:AppOption></local:AppOption>
+        <local:OptionView></local:OptionView>
     </Grid>
 </metro:MetroWindow>
